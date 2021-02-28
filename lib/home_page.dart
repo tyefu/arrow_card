@@ -39,6 +39,7 @@ class _HomePageState extends State<HomePage> {
             onPageChanged: (value){
               initialPage = value;
             },
+            scrollDirection: Axis.horizontal,
             controller: _pageController,
             physics: ClampingScrollPhysics(),
             itemCount: arrows.length,
@@ -52,7 +53,7 @@ class _HomePageState extends State<HomePage> {
           double value = 0;
           if(_pageController.position.haveDimensions){
             value = index - _pageController.page;
-            value = value.clamp(-1, 1);
+            value = (value*0.01).clamp(-1, 1);
           }
           return AnimatedOpacity(
             duration: Duration(milliseconds: 350),
